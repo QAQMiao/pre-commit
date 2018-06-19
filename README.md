@@ -1,20 +1,22 @@
-# pre-commit-with-lint [中文文档](./READMECN.md)
+# pre-commit-with-lint 
 
-It's a fork from pre-commit. uses as pre-commit to run scripts in package.json.
+[中文文档](./READMECN.md)
 
-and add lint to lint files only changed in this commit when pre-commit, without lint all your css or js files.so you can speed up when you commit.
+This registry is forked from pre-commit. It will run the scripts in the package.json which is specified in the config as same as pre-commit.
+
+And there is an extra feature. Before commit, it can add lint to examine file changed in this commit, instead of the whole css and js file in your project. So you can save some time.
 
 # how to use?
 
-you need do nothing but install this package.
+Just install this package.
 
 ```
   npm install pre-commit-with-lint --save-dev
 ```
 
-default this package will use stylelint to lint changed file as ".(s?css)|(less)$", use eslint to lint changed file as ".jsx?$".
+The package will use stylelint to lint the ".(s?css)|(less)$" file, and use eslint to lint the ".jsx?$" file as default.
 
-default setting like this.
+default setting are as follow:
 ```
 {
   "pre-commit": {
@@ -26,7 +28,8 @@ default setting like this.
 }
 ```
 
-you can add other linter, the key is the linter name, value is a regexp string.
+You can add other linter freely, key is the linter name, value is a regexp string.
+
 ```
 {
   "pre-commit": {
@@ -36,22 +39,22 @@ you can add other linter, the key is the linter name, value is a regexp string.
   }
 }
 ```
-you can disable lint by set to "false".
 
-disable all linter
+You can also disable lint by set "false".
+
 ```
 {
   "pre-commit": {
-    "lint": "false"
+    "lint": "false"  //disable all lint
   }
 }
 ```
-disable one linter
+
 ```
 {
   "pre-commit": {
     "lint": {
-      "eslint": "false"
+      "eslint": "false"  //disable one lint
     }
   }
 }
